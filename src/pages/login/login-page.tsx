@@ -52,55 +52,69 @@ export default function LoginPage() {
 	const isFormDisabled = isLoading || isSubmitting;
 
 	return (
-		<div className="min-h-screen w-full bg-gradient-to-b from-background to-muted/30 flex items-center justify-center px-4 py-10">
-			<Card className="w-full max-w-md border border-border/60">
-				<CardHeader className="space-y-2">
-					<CardTitle className="text-2xl">Welcome back</CardTitle>
-					<CardDescription>Sign in to your account to continue</CardDescription>
+		<div className="min-h-screen w-full bg-background flex items-center justify-center px-4 py-10">
+			<Card className="w-full max-w-md shadow-card-offset border border-black">
+				<CardHeader className="text-center space-y-2">
+					<CardTitle className="text-3xl font-bold text-foreground">
+						Hesabınıza giriş yapın
+					</CardTitle>
+					<CardDescription className="text-text-secondary/70 font-bold">
+						Admin paneline erişim için e-posta adresinizi ve şifrenizi girin.
+					</CardDescription>
 				</CardHeader>
 				<form onSubmit={handleSubmit}>
-					<CardContent className="space-y-4">
+					<CardContent className="space-y-6">
 						<div className="space-y-2">
-							<Label htmlFor="email">Email</Label>
+							<Label htmlFor="email" className="text-sm font-semibold">
+								E-posta
+							</Label>
 							<Input
 								id="email"
 								type="email"
-								placeholder="you@example.com"
+								placeholder="E-postanızı girin"
 								autoComplete="email"
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
 								required
 								disabled={isFormDisabled}
+								className="h-10 border border-black placeholder:text-text-secondary/70 placeholder:font-semibold"
 							/>
 						</div>
 
 						<div className="space-y-2">
-							<Label htmlFor="password">Password</Label>
+							<Label htmlFor="password" className="text-sm font-semibold">
+								Şifre
+							</Label>
 							<Input
 								id="password"
 								type="password"
-								placeholder="••••••••"
+								placeholder="Şifrenizi girin"
 								autoComplete="current-password"
 								value={password}
 								onChange={(e) => setPassword(e.target.value)}
 								required
 								disabled={isFormDisabled}
+								className="h-10 border border-black placeholder:text-text-secondary/70 placeholder:font-semibold"
 							/>
 						</div>
 
 						{error && <p className="text-sm text-destructive mt-1">{error}</p>}
 					</CardContent>
-					<CardFooter className="flex flex-col gap-3">
+					<CardFooter className="flex flex-col gap-4">
 						<Button
 							type="submit"
-							className="w-full"
+							className="w-full h-11 bg-primary text-primary-foreground font-semibold "
 							disabled={isFormDisabled}
 							aria-busy={isFormDisabled}
 						>
-							{isFormDisabled ? "Signing in..." : "Sign in"}
+							{isFormDisabled ? "Giriş yapılıyor..." : "Giriş Yap"}
 						</Button>
 					</CardFooter>
 				</form>
+
+				<div className="text-center pb-6">
+					<p className="text-xs text-muted-foreground">2025 © BehaviorWatch</p>
+				</div>
 			</Card>
 		</div>
 	);

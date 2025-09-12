@@ -1,0 +1,605 @@
+{
+	"project_name": "BehaviorWatch Admin Panel",
+	"developer_notes": {
+		"framework": "React + TypeScript + Vite",
+		"styling": "Tailwind CSS v3",
+		"components": "shadcn/ui",
+		"icons": "lucide-react",
+		"state_management": "React hooks (useState, useContext)",
+		"data_fetching": "Tanstack Query",
+		"routing": "React Router",
+		"language": "Turkish (TR)",
+		"tailwind_config": {
+			"custom_colors": "Extend default theme with design system colors",
+			"custom_components": "Create component classes for consistency"
+		}
+	},
+	"design_system": {
+		"color_palette": {
+			"light_mode": {
+				"background": "#fffbf4",
+				"card_background": "#ffffff",
+				"card_shadow": "#6c757d",
+				"card_border": "#000000",
+				"text_primary": "#2d3748",
+				"text_secondary": "#718096",
+				"text_muted": "#a0aec0",
+				"header_bg": "#fffbf4",
+				"header_border": "#343a40",
+				"sidebar_bg": "#ffffff",
+				"sidebar_active": "#eff4f1",
+				"sidebar_active_border": "#38b2ac",
+				"primary_btn_bg": "#e0e1e3",
+				"primary_btn_border": "#313a46",
+				"primary_btn_text": "#313a46",
+				"primary_btn_hover": "#313a46",
+				"secondary_btn_bg": "#e8efea",
+				"secondary_btn_border": "#669776",
+				"secondary_btn_text": "#669776",
+				"secondary_btn_hover": "#669776",
+				"success_btn_bg": "#eaf5e8",
+				"success_btn_border": "#70bb63",
+				"success_btn_text": "#70bb63",
+				"success_btn_hover": "#70bb63",
+				"danger_btn_bg": "#fce7e7",
+				"danger_btn_border": "#ed6060",
+				"danger_btn_text": "#ed6060",
+				"danger_btn_hover": "#ed6060",
+				"warning_btn_bg": "#fcf4e5",
+				"warning_btn_border": "#ebb751",
+				"warning_btn_text": "#ebb751",
+				"warning_btn_hover": "#ebb751",
+				"info_btn_bg": "#e7f3fa",
+				"info_btn_border": "#60addf",
+				"info_btn_text": "#60addf",
+				"info_btn_hover": "#60addf",
+				"border_color": "#e2e8f0",
+				"hover_bg": "#f8f9fa"
+			},
+			"dark_mode": {
+				"background": "#17181e",
+				"card_background": "#1e1f27",
+				"card_shadow": "#6c757d",
+				"card_border": "#37394d",
+				"text_primary": "#ffffff",
+				"text_secondary": "#a0aec0",
+				"text_muted": "#718096",
+				"header_bg": "#000000",
+				"header_border": "#37394d",
+				"sidebar_bg": "#1e1f27",
+				"sidebar_active": "#2c3737",
+				"sidebar_active_border": "#669776",
+				"primary_btn_bg": "#22252d",
+				"primary_btn_border": "#313a46",
+				"primary_btn_text": "#313a46",
+				"primary_btn_hover": "#313a46",
+				"secondary_btn_bg": "#2c3737",
+				"secondary_btn_border": "#669776",
+				"secondary_btn_text": "#669776",
+				"secondary_btn_hover": "#669776",
+				"success_btn_bg": "#2e3e33",
+				"success_btn_border": "#70bb63",
+				"success_btn_text": "#70bb63",
+				"success_btn_hover": "#70bb63",
+				"danger_btn_bg": "#472c32",
+				"danger_btn_border": "#ed6060",
+				"danger_btn_text": "#ed6060",
+				"danger_btn_hover": "#ed6060",
+				"warning_btn_bg": "#473e2f",
+				"warning_btn_border": "#ebb751",
+				"warning_btn_text": "#ebb751",
+				"warning_btn_hover": "#ebb751",
+				"info_btn_bg": "#2b3c4c",
+				"info_btn_border": "#60addf",
+				"info_btn_text": "#60addf",
+				"info_btn_hover": "#60addf",
+				"border_color": "#37394d",
+				"hover_bg": "#2c3737"
+			}
+		},
+		"typography": {
+			"primary_font": {
+				"family": "Inter, system-ui, sans-serif",
+				"description": "Ana metin, başlıklar ve tüm UI elementleri için modern, okunabilir font"
+			},
+			"font_loading": {
+				"strategy": "swap",
+				"fallback": "system-ui, -apple-system, sans-serif",
+				"google_fonts": "Inter:400,500,600,700"
+			},
+			"font_sizes": {
+				"xs": "0.75rem",
+				"sm": "0.875rem",
+				"base": "1rem",
+				"lg": "1.125rem",
+				"xl": "1.25rem",
+				"2xl": "1.5rem",
+				"3xl": "1.875rem"
+			},
+			"font_weights": {
+				"normal": "400",
+				"medium": "500",
+				"semibold": "600",
+				"bold": "700"
+			},
+			"line_heights": {
+				"tight": "1.25",
+				"normal": "1.5",
+				"relaxed": "1.75"
+			},
+			"letter_spacing": {
+				"tight": "-0.025em",
+				"normal": "0",
+				"wide": "0.025em"
+			}
+		},
+		"spacing": {
+			"xs": "0.5rem",
+			"sm": "0.75rem",
+			"md": "1rem",
+			"lg": "1.5rem",
+			"xl": "2rem",
+			"2xl": "3rem"
+		},
+		"border_radius": {
+			"sm": "0.375rem",
+			"md": "0.5rem",
+			"lg": "0.75rem",
+			"xl": "1rem"
+		},
+		"shadows": {
+			"card": "0 1px 3px 0 rgba(108, 117, 125, 0.1), 0 1px 2px 0 rgba(108, 117, 125, 0.06)",
+			"hover": "0 4px 6px -1px rgba(108, 117, 125, 0.1), 0 2px 4px -1px rgba(108, 117, 125, 0.06)"
+		}
+	},
+	"ui_components": {
+		"buttons": {
+			"style": "soft_buttons",
+			"description": "Soft background renkleri ile kenarlıklı butonlar",
+			"variants": [
+				{
+					"name": "primary",
+					"bg_color": "primary_btn_bg",
+					"border_color": "primary_btn_border",
+					"text_color": "primary_btn_text",
+					"hover_bg": "primary_btn_hover",
+					"shadow": "primary_btn_border"
+				},
+				{
+					"name": "secondary",
+					"bg_color": "secondary_btn_bg",
+					"border_color": "secondary_btn_border",
+					"text_color": "secondary_btn_text",
+					"hover_bg": "secondary_btn_hover",
+					"shadow": "secondary_btn_border"
+				},
+				{
+					"name": "success",
+					"bg_color": "success_btn_bg",
+					"border_color": "success_btn_border",
+					"text_color": "success_btn_text",
+					"hover_bg": "success_btn_hover",
+					"shadow": "success_btn_border"
+				},
+				{
+					"name": "danger",
+					"bg_color": "danger_btn_bg",
+					"border_color": "danger_btn_border",
+					"text_color": "danger_btn_text",
+					"hover_bg": "danger_btn_hover",
+					"shadow": "danger_btn_border"
+				},
+				{
+					"name": "warning",
+					"bg_color": "warning_btn_bg",
+					"border_color": "warning_btn_border",
+					"text_color": "warning_btn_text",
+					"hover_bg": "warning_btn_hover",
+					"shadow": "warning_btn_border"
+				},
+				{
+					"name": "info",
+					"bg_color": "info_btn_bg",
+					"border_color": "info_btn_border",
+					"text_color": "info_btn_text",
+					"hover_bg": "info_btn_hover",
+					"shadow": "info_btn_border"
+				}
+			],
+			"sizes": [
+				{
+					"name": "sm",
+					"padding": "px-3 py-1.5",
+					"font_size": "text-sm",
+					"border_radius": "rounded-md"
+				},
+				{
+					"name": "md",
+					"padding": "px-4 py-2",
+					"font_size": "text-base",
+					"border_radius": "rounded-md"
+				},
+				{
+					"name": "lg",
+					"padding": "px-6 py-3",
+					"font_size": "text-lg",
+					"border_radius": "rounded-md"
+				}
+			],
+			"hover_effects": {
+				"background_transition": "all 0.2s ease",
+				"hover_behavior": "background becomes border color",
+				"text_color_change": "text remains same color as border"
+			}
+		},
+		"cards": {
+			"default_style": {
+				"background": "card_background",
+				"border": "1px solid card_border",
+				"shadow": "card",
+				"border_radius": "lg",
+				"padding": "lg"
+			},
+			"variants": ["stats_card", "chart_card", "table_card", "content_card"]
+		},
+		"forms": {
+			"input_style": {
+				"border": "1px solid border_color",
+				"border_radius": "md",
+				"padding": "px-3 py-2",
+				"focus_border": "primary_btn_border",
+				"focus_ring": "ring-2 ring-primary_btn_border/20"
+			},
+			"login_form": {
+				"title": "Hesabınıza giriş yapın",
+				"subtitle": "Admin paneline erişim için e-posta adresinizi ve şifrenizi girin.",
+				"fields": [
+					{
+						"name": "email",
+						"type": "email",
+						"label": "E-posta",
+						"placeholder": "E-postanızı girin",
+						"required": true
+					},
+					{
+						"name": "password",
+						"type": "password",
+						"label": "Şifre",
+						"placeholder": "Şifrenizi girin",
+						"required": true
+					}
+				],
+				"footer": {
+					"text": "2025 BehaviorWatch"
+				}
+			}
+		},
+		"pagination": {
+			"style": "rounded",
+			"show_info": true,
+			"info_format": "Gösterilen {start} ile {end} arasında {total} sonuç",
+			"buttons": [
+				"ChevronFirst",
+				"ChevronLeft",
+				"1",
+				"2",
+				"3",
+				"...",
+				"4",
+				"ChevronRight",
+				"ChevronLast"
+			]
+		},
+		"date_picker": {
+			"calendar_style": {
+				"header_bg": "primary_btn_border",
+				"header_text": "white",
+				"selected_bg": "primary_btn_border",
+				"selected_text": "white",
+				"today_bg": "info_btn_border",
+				"hover_bg": "hover_bg"
+			},
+			"range_picker": true,
+			"format": "GG.AA.YYYY"
+		}
+	},
+	"responsive_design": {
+		"breakpoints": {
+			"sm": "640px",
+			"md": "768px",
+			"lg": "1024px",
+			"xl": "1280px"
+		},
+		"mobile_behavior": {
+			"sidebar": "collapsible_overlay",
+			"header": "sticky",
+			"cards": "full_width_stack",
+			"tables": "horizontal_scroll"
+		}
+	},
+	"animations": {
+		"sidebar_toggle": "transform 0.3s ease",
+		"dropdown": "opacity 0.2s ease",
+		"modal": "scale 0.3s ease",
+		"button_hover": "all 0.2s ease",
+		"card_hover": "shadow 0.3s ease"
+	},
+	"accessibility": {
+		"focus_indicators": true,
+		"keyboard_navigation": true,
+		"aria_labels": true,
+		"color_contrast": "WCAG AA compliant",
+		"screen_reader_support": true
+	},
+	"layout_structure": {
+		"main_layout": {
+			"type": "sidebar_layout",
+			"sidebar_width": "240px",
+			"header_height": "64px",
+			"content_padding": "24px",
+			"sidebar_position": "left",
+			"responsive_breakpoint": "1024px"
+		},
+		"header": {
+			"style": "header_border border-b dotted 1px",
+			"components": [
+				{
+					"type": "header_actions",
+					"position": "right",
+					"items": [
+						{
+							"type": "notifications",
+							"style": "card",
+							"icon": "Bell",
+							"badge_count": 3
+						},
+						{
+							"type": "theme_toggle",
+							"style": "card",
+							"icon": "Moon/Sun"
+						}
+					]
+				}
+			]
+		},
+		"sidebar": {
+			"logo_section": {
+				"logo": "BEHAVIORWATCH",
+				"logo_font": {
+					"family": "Inter",
+					"weight": "bold",
+					"size": "xl",
+					"letter_spacing": "wide",
+					"description": "Inter font ailesinin bold versiyonu, geniş harf aralığı ile"
+				},
+				"icon_color": "multiple",
+				"styling": {
+					"font_weight": "bold",
+					"letter_spacing": "wide",
+					"color": "text_primary",
+					"padding": "lg"
+				}
+			},
+			"navigation_sections": [
+				{
+					"type": "main_nav",
+					"items": [
+						{
+							"name": "Dashboard",
+							"icon": "LayoutDashboard",
+							"active": true,
+							"badge": {
+								"type": "dot",
+								"color": "success"
+							}
+						}
+					]
+				},
+				{
+					"type": "section_with_header",
+					"header": "UYGULAMALAR & SAYFALAR",
+					"items": [
+						{
+							"name": "Kişiler",
+							"icon": "Users"
+						},
+						{
+							"name": "İhlaller",
+							"icon": "ShieldAlert"
+						},
+						{
+							"name": "Organizasyonlar",
+							"icon": "Building2"
+						},
+						{
+							"name": "İşletmeler",
+							"icon": "Building"
+						},
+						{
+							"name": "Settings",
+							"icon": "Settings"
+						},
+						{
+							"name": "Kameralar",
+							"icon": "Cctv"
+						},
+						{
+							"name": "Görüntüler",
+							"icon": "Video",
+							"has_submenu": true,
+							"submenu": ["Görüntü Entegrasyonu"]
+						},
+						{
+							"name": "Raporlar",
+							"icon": "Files",
+							"has_submenu": true,
+							"submenu": [
+								{
+									"name": "Kamera Raporu",
+									"icon": "FileVideoCamera"
+								},
+								{
+									"name": "Timeseries",
+									"icon": "FileClock"
+								},
+								{
+									"name": "Özet(Summary)",
+									"icon": "FileType2"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	"dashboard_components": {
+		"page_header": {
+			"title": "DASHBOARD",
+			"actions": [
+				{
+					"type": "dropdown",
+					"label": "Sırala",
+					"icon": "SortAsc",
+					"default_value": "Son Güncelleme"
+				},
+				{
+					"type": "date_range_picker",
+					"default_value": "01 May to 31 May",
+					"icon": "Calendar"
+				}
+			]
+		},
+		"stats_cards": [
+			{
+				"title": "TOPLAM SİPARİŞLER",
+				"value": "687.3K",
+				"change": "-0.19%",
+				"change_type": "decrease",
+				"period": "Geçen aya göre",
+				"icon": "ShoppingBag",
+				"icon_bg": "primary"
+			},
+			{
+				"title": "TOPLAM İADELER",
+				"value": "9.62K",
+				"change": "+26.87%",
+				"change_type": "increase",
+				"period": "Geçen aya göre",
+				"icon": "Package",
+				"icon_bg": "primary"
+			},
+			{
+				"title": "ORT. SATIŞ KAZANCI",
+				"value": "$98.24",
+				"currency": "USD",
+				"change": "+3.51%",
+				"change_type": "increase",
+				"period": "Geçen aya göre",
+				"icon": "DollarSign",
+				"icon_bg": "primary"
+			},
+			{
+				"title": "ZİYAREţ SAYISI",
+				"value": "87.94M",
+				"change": "-1.05%",
+				"change_type": "decrease",
+				"period": "Geçen aya göre",
+				"icon": "Users",
+				"icon_bg": "primary"
+			}
+		],
+		"data_tables": {
+			"persons_table": {
+				"title": "Kişi Listesi",
+				"actions": [
+					{
+						"type": "button",
+						"label": "Kişi Ekle",
+						"variant": "success",
+						"icon": "Plus"
+					}
+				],
+				"pagination_info": "Toplam 100(backend'deki kişi sayısı) kişi.",
+				"columns": [
+					"Adı Soyadı(name)",
+					"İşletme(business.name)",
+					"E-posta(email)",
+					"Telefon(phone)",
+					"Yetki(title)"
+				],
+				"sample_data": [
+					{
+						"name": "Ramazan Türkyılmaz",
+						"business": "Yemelik Çiğköfte",
+						"email": "ramazan@gmail.com",
+						"phone": "532 123 45 67",
+						"role": "Çalışan"
+					},
+					{
+						"name": "Murat Gündüz",
+						"business": "Yemelik Çiğköfte",
+						"email": "murat@gmail.com",
+						"phone": "532 123 45 67",
+						"role": "Yönetici"
+					}
+				]
+			},
+			"cameras_table": {
+				"title": "Kamera Listesi",
+				"actions": [
+					{
+						"type": "button",
+						"label": "Kamera Ekle",
+						"variant": "success",
+						"icon": "Plus"
+					}
+				],
+				"columns": [
+					"Kamera(name)",
+					"İşletme(business.name)",
+					"Aktiflik(enabled)"
+				],
+				"sample_data": [
+					{
+						"name": "Kamera 1",
+						"business": "Yemelik Çiğköfte",
+						"enabled": true
+					},
+					{
+						"name": "Kamera 2",
+						"business": "Yemelik Çiğköfte",
+						"enabled": false
+					}
+				]
+			}
+		},
+		"recent_violations": {
+			"title": "Son İhlaller",
+			"go_to_violations_btn": true,
+			"recent_violations": {
+				"title": "Son İhlaller:",
+				"items": [
+					{
+						"violation": "İhlal 1",
+						"person": "Ramazan Türkyılmaz",
+						"business": "Yemelik Çiğköfte(under the persons name)",
+						"severity": "Yüksek"
+					},
+					{
+						"violation": "İhlal 2",
+						"person": "Murat Gündüz",
+						"business": "Yemelik Çiğköfte(under the persons name)",
+						"severity": "Orta"
+					},
+					{
+						"violation": "İhlal 3",
+						"person": "Ali Veli",
+						"business": "Yemelik Çiğköfte(under the persons name)",
+						"severity": "Düşük"
+					}
+				]
+			}
+		}
+	}
+}
