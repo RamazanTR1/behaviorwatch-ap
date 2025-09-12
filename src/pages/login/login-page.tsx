@@ -101,14 +101,17 @@ export default function LoginPage() {
 						{error && <p className="text-sm text-destructive mt-1">{error}</p>}
 					</CardContent>
 					<CardFooter className="flex flex-col gap-4">
-						<Button
-							type="submit"
-							className="w-full h-11 bg-primary text-primary-foreground font-semibold "
-							disabled={isFormDisabled}
-							aria-busy={isFormDisabled}
-						>
-							{isFormDisabled ? "Giriş yapılıyor..." : "Giriş Yap"}
-						</Button>
+						<div className="relative w-full group">
+							<Button
+								type="submit"
+								className="w-full h-11 bg-primary text-primary-foreground font-semibold"
+								disabled={isFormDisabled}
+								aria-busy={isFormDisabled}
+							>
+								{isFormDisabled ? "Giriş yapılıyor..." : "Giriş Yap"}
+							</Button>
+							<span className="absolute inset-0 rounded-sm border border-primary translate-x-1 translate-y-1 z-0 pointer-events-none "></span>
+						</div>
 					</CardFooter>
 				</form>
 

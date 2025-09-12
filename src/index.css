@@ -6,181 +6,181 @@
 @layer base {
 	:root {
 		/* Light Mode Colors from Design System */
-		--background: 45 100% 97%; /* #fffbf4 */
-		--foreground: 210 13% 18%; /* #2d3748 */
+		--background: 38 100% 98%; /* #fffbf4 */
+		--foreground: 218 23% 23%; /* #2d3748 */
 		--card: 0 0% 100%; /* #ffffff */
-		--card-foreground: 210 13% 18%; /* #2d3748 */
+		--card-foreground: 218 23% 23%; /* #2d3748 */
 		--popover: 0 0% 100%; /* #ffffff */
-		--popover-foreground: 210 13% 18%; /* #2d3748 */
+		--popover-foreground: 218 23% 23%; /* #2d3748 */
 
 		/* Primary Button Colors */
-		--primary: 210 25% 25%; /* #313a46 */
+		--primary: 214 18% 23%; /* #313a46 */
 		--primary-foreground: 0 0% 100%; /* white */
 
 		/* Secondary Button Colors */
-		--secondary: 142 24% 45%; /* #669776 */
+		--secondary: 140 19% 50%; /* #669776 */
 		--secondary-foreground: 0 0% 100%; /* white */
 
 		/* Success Button Colors */
-		--success: 106 36% 52%; /* #70bb63 */
+		--success: 111 39% 56%; /* #70bb63 */
 		--success-foreground: 0 0% 100%; /* white */
 
 		/* Danger Button Colors */
-		--destructive: 0 67% 65%; /* #ed6060 */
+		--destructive: 0 80% 65%; /* #ed6060 */
 		--destructive-foreground: 0 0% 100%; /* white */
 
 		/* Warning Button Colors */
-		--warning: 42 76% 63%; /* #ebb751 */
+		--warning: 40 79% 62%; /* #ebb751 */
 		--warning-foreground: 0 0% 100%; /* white */
 
 		/* Info Button Colors */
-		--info: 201 67% 62%; /* #60addf */
+		--info: 204 66% 63%; /* #60addf */
 		--info-foreground: 0 0% 100%; /* white */
 
-		--muted: 210 16% 82%; /* #a0aec0 */
-		--muted-foreground: 210 16% 82%; /* #a0aec0 */
-		--accent: 210 16% 82%; /* #a0aec0 */
-		--accent-foreground: 210 13% 18%; /* #2d3748 */
+		--muted: 214 20% 69%; /* #a0aec0 */
+		--muted-foreground: 214 20% 69%; /* #a0aec0 */
+		--accent: 214 20% 69%; /* #a0aec0 */
+		--accent-foreground: 218 23% 23%; /* #2d3748 */
 		--border: 214 32% 91%; /* #e2e8f0 */
 		--input: 214 32% 91%; /* #e2e8f0 */
-		--ring: 210 25% 25%; /* #313a46 */
-		--chart-1: 142 24% 45%; /* #669776 */
-		--chart-2: 106 36% 52%; /* #70bb63 */
-		--chart-3: 0 67% 65%; /* #ed6060 */
-		--chart-4: 42 76% 63%; /* #ebb751 */
-		--chart-5: 201 67% 62%; /* #60addf */
+		--ring: 214 18% 23%; /* #313a46 */
+		--chart-1: 140 19% 50%; /* #669776 */
+		--chart-2: 111 39% 56%; /* #70bb63 */
+		--chart-3: 0 80% 65%; /* #ed6060 */
+		--chart-4: 40 79% 62%; /* #ebb751 */
+		--chart-5: 204 66% 63%; /* #60addf */
 		--radius: 0.5rem;
 
 		/* Design System Specific Colors - Light Mode */
-		--header-bg: 45 100% 97%; /* #fffbf4 */
-		--header-border: 210 25% 25%; /* #343a40 */
+		--header-bg: 38 100% 98%; /* #fffbf4 */
+		--header-border: 210 10% 23%; /* #343a40 */
 		--sidebar-bg: 0 0% 100%; /* #ffffff */
-		--sidebar-active: 142 25% 94%; /* #eff4f1 */
-		--sidebar-active-border: 174 44% 48%; /* #38b2ac */
-		--hover-bg: 210 20% 98%; /* #f8f9fa */
+		--sidebar-active: 144 20% 95%; /* #eff4f1 */
+		--sidebar-active-border: 177 52% 46%; /* #38b2ac */
+		--hover-bg: 210 17% 98%; /* #f8f9fa */
 
 		/* Card Colors */
 		--card-background: 0 0% 100%; /* #ffffff */
-		--card-shadow: 210 16% 46%; /* #6c757d */
+		--card-shadow: 207 7% 46%; /* #6c757d */
 		--card-border: 0 0% 0%; /* #000000 */
 
 		/* Text Colors */
-		--text-primary: 210 13% 18%; /* #2d3748 */
-		--text-secondary: 210 16% 46%; /* #718096 */
-		--text-muted: 210 16% 82%; /* #a0aec0 */
+		--text-primary: 218 23% 23%; /* #2d3748 */
+		--text-secondary: 216 15% 52%; /* #718096 */
+		--text-muted: 214 20% 69%; /* #a0aec0 */
 
 		/* Button Background Colors */
-		--primary-btn-bg: 210 10% 88%; /* #e0e1e3 */
-		--secondary-btn-bg: 142 25% 94%; /* #e8efea */
-		--success-btn-bg: 106 30% 95%; /* #eaf5e8 */
-		--danger-btn-bg: 0 67% 95%; /* #fce7e7 */
-		--warning-btn-bg: 42 76% 95%; /* #fcf4e5 */
-		--info-btn-bg: 201 67% 95%; /* #e7f3fa */
+		--primary-btn-bg: 220 5% 88%; /* #e0e1e3 */
+		--secondary-btn-bg: 137 18% 92%; /* #e8efea */
+		--success-btn-bg: 111 39% 94%; /* #eaf5e8 */
+		--danger-btn-bg: 0 78% 95%; /* #fce7e7 */
+		--warning-btn-bg: 39 79% 94%; /* #fcf4e5 */
+		--info-btn-bg: 202 66% 94%; /* #e7f3fa */
 
 		/* Button Text Colors */
-		--primary-btn-text: 210 25% 25%; /* #313a46 */
-		--secondary-btn-text: 142 24% 45%; /* #669776 */
-		--success-btn-text: 106 36% 52%; /* #70bb63 */
-		--danger-btn-text: 0 67% 65%; /* #ed6060 */
-		--warning-btn-text: 42 76% 63%; /* #ebb751 */
-		--info-btn-text: 201 67% 62%; /* #60addf */
+		--primary-btn-text: 214 18% 23%; /* #313a46 */
+		--secondary-btn-text: 140 19% 50%; /* #669776 */
+		--success-btn-text: 111 39% 56%; /* #70bb63 */
+		--danger-btn-text: 0 80% 65%; /* #ed6060 */
+		--warning-btn-text: 40 79% 62%; /* #ebb751 */
+		--info-btn-text: 204 66% 63%; /* #60addf */
 
 		/* Button Hover Colors */
-		--primary-btn-hover: 210 25% 25%; /* #313a46 */
-		--secondary-btn-hover: 142 24% 45%; /* #669776 */
-		--success-btn-hover: 106 36% 52%; /* #70bb63 */
-		--danger-btn-hover: 0 67% 65%; /* #ed6060 */
-		--warning-btn-hover: 42 76% 63%; /* #ebb751 */
-		--info-btn-hover: 201 67% 62%; /* #60addf */
+		--primary-btn-hover: 214 18% 23%; /* #313a46 */
+		--secondary-btn-hover: 140 19% 50%; /* #669776 */
+		--success-btn-hover: 111 39% 56%; /* #70bb63 */
+		--danger-btn-hover: 0 80% 65%; /* #ed6060 */
+		--warning-btn-hover: 40 79% 62%; /* #ebb751 */
+		--info-btn-hover: 204 66% 63%; /* #60addf */
 	}
 
 	.dark {
 		/* Dark Mode Colors from Design System */
-		--background: 230 16% 9%; /* #17181e */
+		--background: 231 13% 10%; /* #17181e */
 		--foreground: 0 0% 100%; /* #ffffff */
-		--card: 230 14% 13%; /* #1e1f27 */
+		--card: 233 13% 14%; /* #1e1f27 */
 		--card-foreground: 0 0% 100%; /* #ffffff */
-		--popover: 230 14% 13%; /* #1e1f27 */
+		--popover: 233 13% 14%; /* #1e1f27 */
 		--popover-foreground: 0 0% 100%; /* #ffffff */
 
 		/* Primary Button Colors */
-		--primary: 210 25% 25%; /* #313a46 */
+		--primary: 214 18% 23%; /* #313a46 */
 		--primary-foreground: 0 0% 100%; /* white */
 
 		/* Secondary Button Colors */
-		--secondary: 142 24% 45%; /* #669776 */
+		--secondary: 140 19% 50%; /* #669776 */
 		--secondary-foreground: 0 0% 100%; /* white */
 
 		/* Success Button Colors */
-		--success: 106 36% 52%; /* #70bb63 */
+		--success: 111 39% 56%; /* #70bb63 */
 		--success-foreground: 0 0% 100%; /* white */
 
 		/* Danger Button Colors */
-		--destructive: 0 67% 65%; /* #ed6060 */
+		--destructive: 0 80% 65%; /* #ed6060 */
 		--destructive-foreground: 0 0% 100%; /* white */
 
 		/* Warning Button Colors */
-		--warning: 42 76% 63%; /* #ebb751 */
+		--warning: 40 79% 62%; /* #ebb751 */
 		--warning-foreground: 0 0% 100%; /* white */
 
 		/* Info Button Colors */
-		--info: 201 67% 62%; /* #60addf */
+		--info: 204 66% 63%; /* #60addf */
 		--info-foreground: 0 0% 100%; /* white */
 
-		--muted: 210 16% 82%; /* #a0aec0 */
-		--muted-foreground: 210 16% 82%; /* #a0aec0 */
-		--accent: 210 16% 82%; /* #a0aec0 */
+		--muted: 214 20% 69%; /* #a0aec0 */
+		--muted-foreground: 214 20% 69%; /* #a0aec0 */
+		--accent: 214 20% 69%; /* #a0aec0 */
 		--accent-foreground: 0 0% 100%; /* white */
 		--border: 230 14% 25%; /* #37394d */
 		--input: 230 14% 13%; /* #1e1f27 */
-		--ring: 142 24% 45%; /* #669776 */
-		--chart-1: 142 24% 45%; /* #669776 */
-		--chart-2: 106 36% 52%; /* #70bb63 */
-		--chart-3: 0 67% 65%; /* #ed6060 */
-		--chart-4: 42 76% 63%; /* #ebb751 */
-		--chart-5: 201 67% 62%; /* #60addf */
+		--ring: 140 19% 50%; /* #669776 */
+		--chart-1: 140 19% 50%; /* #669776 */
+		--chart-2: 111 39% 56%; /* #70bb63 */
+		--chart-3: 0 80% 65%; /* #ed6060 */
+		--chart-4: 40 79% 62%; /* #ebb751 */
+		--chart-5: 204 66% 63%; /* #60addf */
 
 		/* Design System Specific Colors - Dark Mode */
 		--header-bg: 0 0% 0%; /* #000000 */
 		--header-border: 230 14% 25%; /* #37394d */
-		--sidebar-bg: 230 14% 13%; /* #1e1f27 */
+		--sidebar-bg: 233 13% 14%; /* #1e1f27 */
 		--sidebar-active: 174 25% 18%; /* #2c3737 */
-		--sidebar-active-border: 142 24% 45%; /* #669776 */
+		--sidebar-active-border: 140 19% 50%; /* #669776 */
 		--hover-bg: 174 25% 18%; /* #2c3737 */
 
 		/* Card Colors - Dark Mode */
-		--card-background: 230 14% 13%; /* #1e1f27 */
-		--card-shadow: 210 16% 46%; /* #6c757d */
+		--card-background: 233 13% 14%; /* #1e1f27 */
+		--card-shadow: 208 7% 46%; /* #6c757d */
 		--card-border: 230 14% 25%; /* #37394d */
 
 		/* Text Colors - Dark Mode */
 		--text-primary: 0 0% 100%; /* #ffffff */
-		--text-secondary: 210 16% 82%; /* #a0aec0 */
-		--text-muted: 210 16% 46%; /* #718096 */
+		--text-secondary: 214 20% 69%; /* #a0aec0 */
+		--text-muted: 216 15% 52%; /* #718096 */
 
 		/* Button Background Colors - Dark Mode */
-		--primary-btn-bg: 230 14% 17%; /* #22252d */
-		--secondary-btn-bg: 174 25% 18%; /* #2c3737 */
-		--success-btn-bg: 106 25% 20%; /* #2e3e33 */
-		--danger-btn-bg: 0 25% 20%; /* #472c32 */
-		--warning-btn-bg: 42 25% 20%; /* #473e2f */
-		--info-btn-bg: 201 25% 20%; /* #2b3c4c */
+		--primary-btn-bg: 225 15% 15%; /* #21242d */
+		--secondary-btn-bg: 180 10% 20%; /* #2d3737 */
+		--success-btn-bg: 136 14% 21%; /* #2f3e33 */
+		--danger-btn-bg: 347 23% 23%; /* #482d33 */
+		--warning-btn-bg: 38 19% 23%; /* #463e30 */
+		--info-btn-bg: 211 26% 23%; /* #2c3b4b */
 
 		/* Button Text Colors - Dark Mode */
-		--primary-btn-text: 210 25% 25%; /* #313a46 */
-		--secondary-btn-text: 142 24% 45%; /* #669776 */
-		--success-btn-text: 106 36% 52%; /* #70bb63 */
-		--danger-btn-text: 0 67% 65%; /* #ed6060 */
-		--warning-btn-text: 42 76% 63%; /* #ebb751 */
-		--info-btn-text: 201 67% 62%; /* #60addf */
+		--primary-btn-text: 214 18% 23%; /* #313a46 */
+		--secondary-btn-text: 140 19% 50%; /* #669776 */
+		--success-btn-text: 111 39% 56%; /* #70bb63 */
+		--danger-btn-text: 0 80% 65%; /* #ed6060 */
+		--warning-btn-text: 40 79% 62%; /* #ebb751 */
+		--info-btn-text: 204 66% 63%; /* #60addf */
 
 		/* Button Hover Colors - Dark Mode */
-		--primary-btn-hover: 210 25% 25%; /* #313a46 */
-		--secondary-btn-hover: 142 24% 45%; /* #669776 */
-		--success-btn-hover: 106 36% 52%; /* #70bb63 */
-		--danger-btn-hover: 0 67% 65%; /* #ed6060 */
-		--warning-btn-hover: 42 76% 63%; /* #ebb751 */
-		--info-btn-hover: 201 67% 62%; /* #60addf */
+		--primary-btn-hover: 214 18% 23%; /* #313a46 */
+		--secondary-btn-hover: 140 19% 50%; /* #669776 */
+		--success-btn-hover: 111 39% 56%; /* #70bb63 */
+		--danger-btn-hover: 0 80% 65%; /* #ed6060 */
+		--warning-btn-hover: 40 79% 62%; /* #ebb751 */
+		--info-btn-hover: 204 66% 63%; /* #60addf */
 	}
 }
 

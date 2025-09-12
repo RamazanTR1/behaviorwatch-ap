@@ -31,8 +31,8 @@ export default function AdminLayout() {
 				onMobileClose={closeMobileSidebar}
 			/>
 			<div
-				className={`min-h-screen flex flex-col transition-all duration-300 pl-0 md:${
-					sidebarCollapsed ? "pl-20" : "pl-64"
+				className={`min-h-screen flex flex-col transition-all duration-300 ${
+					sidebarCollapsed ? "md:pl-20" : "md:pl-64"
 				}`}
 			>
 				<Header

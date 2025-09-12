@@ -44,6 +44,15 @@ export default {
 				"2xl": "3rem",
 			},
 
+			// Ensure breakpoints are properly configured
+			screens: {
+				sm: "640px",
+				md: "768px",
+				lg: "1024px",
+				xl: "1280px",
+				"2xl": "1536px",
+			},
+
 			// Border Radius from Design System
 			borderRadius: {
 				sm: "0.375rem",

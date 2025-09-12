@@ -20,19 +20,17 @@ export default function Header({
 					variant="outline"
 					size="icon"
 					onClick={() => {
-						console.log("Header button clicked");
 						// Desktop'ta sidebar toggle, mobile'da mobile toggle
 						if (window.innerWidth >= 768) {
-							console.log("Desktop - Calling onSidebarToggle");
 							onSidebarToggle?.();
 						} else {
-							console.log("Mobile - Calling onMobileToggle");
 							onMobileToggle?.();
 						}
 					}}
-					className="shadow-sm bg-btn-secondary-hover hover:bg-black rounded-sm size-10"
+					className="shadow-sm bg-btn-secondary-hover hover:bg-black rounded-sm size-10 relative"
 				>
 					<Menu className="size-6 text-white" />
+					<span className="absolute inset-0 rounded-sm border border-btn-secondary-hover translate-x-1 translate-y-1 -z-10"></span>
 				</Button>
 			</div>
 
