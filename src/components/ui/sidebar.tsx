@@ -87,14 +87,6 @@ const NAV_ITEMS = {
 					to: "/videos",
 					label: "Görüntüler",
 					icon: Video,
-					has_submenu: true,
-					submenu: [
-						{
-							to: "/videos/integration",
-							label: "Görüntü Entegrasyonu",
-							icon: Video,
-						},
-					],
 				},
 				{
 					to: "/reports",

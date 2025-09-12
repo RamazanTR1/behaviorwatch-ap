@@ -4,10 +4,10 @@ import { TrendingUp, TrendingDown } from "lucide-react";
 interface StatsCardProps {
 	title: string;
 	value: string;
-	change: string;
-	changeType: "increase" | "decrease";
-	period: string;
-	icon: React.ComponentType<{ className?: string }>;
+	change: string | null;
+	changeType: "increase" | "decrease" | null;
+	period: string | null;
+	icon: React.ComponentType<{ className?: string }> | null;
 	iconBg?: "primary" | "secondary" | "success" | "danger" | "warning" | "info";
 }
 
@@ -17,25 +17,25 @@ export default function StatsCard({
 	change,
 	changeType,
 	period,
-	icon: Icon,
+	icon: Icon = null,
 	iconBg = "primary",
 }: StatsCardProps) {
 	const getIconBgColor = () => {
 		switch (iconBg) {
 			case "primary":
-				return "bg-primary-500";
+				return "bg-primary";
 			case "secondary":
-				return "bg-secondary-500";
+				return "bg-secondary";
 			case "success":
-				return "bg-success-500";
+				return "bg-success";
 			case "danger":
-				return "bg-danger-500";
+				return "bg-danger";
 			case "warning":
-				return "bg-warning-500";
+				return "bg-warning";
 			case "info":
-				return "bg-info-500";
+				return "bg-info";
 			default:
-				return "bg-primary-500";
+				return "bg-primary";
 		}
 	};
 
@@ -44,7 +44,7 @@ export default function StatsCard({
 	};
 
 	return (
-		<Card className="p-6 shadow-card-offset border-black">
+		<Card className="p-6 shadow-card-offset border-card-border">
 			{/* Title */}
 			<div className="text-center mb-4">
 				<h3 className="text-sm font-semibold text-text-secondary uppercase tracking-wider">
@@ -58,7 +58,7 @@ export default function StatsCard({
 				<div
 					className={`${getIconBgColor()} rounded-full p-3 flex items-center justify-center`}
 				>
-					<Icon className="h-6 w-6 text-white" />
+					{Icon && <Icon className="h-6 w-6 text-white" />}
 				</div>
 
 				{/* Value */}
@@ -75,11 +75,13 @@ export default function StatsCard({
 					<span className={`text-sm font-medium ${getChangeColor()}`}>
 						{change}
 					</span>
-					{changeType === "increase" ? (
-						<TrendingUp className={`h-4 w-4 ${getChangeColor()}`} />
-					) : (
-						<TrendingDown className={`h-4 w-4 ${getChangeColor()}`} />
-					)}
+					{changeType === "increase"
+						? change && <TrendingUp className={`h-4 w-4 ${getChangeColor()}`} />
+						: changeType === "decrease"
+						? change && (
+								<TrendingDown className={`h-4 w-4 ${getChangeColor()}`} />
+						  )
+						: null}
 				</div>
 				<p className="text-xs text-text-secondary mt-1">{period}</p>
 			</div>
