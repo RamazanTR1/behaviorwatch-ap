@@ -24,7 +24,9 @@ export default function Pagination({
 	return (
 		<div className="flex items-center justify-between px-6 py-4 border-t border-card-border">
 			<p className="text-sm text-text-secondary">
-				Toplam {totalItems} sonuçtan {showingItems} tanesi gösteriliyor.
+				Toplam <span className="font-semibold">{totalItems}</span> sonuçtan{" "}
+				<span className="font-semibold">{showingItems}</span> tanesi
+				gösteriliyor
 			</p>
 			<div className="flex items-center gap-1">
 				{/* Previous Button */}

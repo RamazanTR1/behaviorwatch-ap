@@ -59,7 +59,6 @@ export default function CameraList({
 			<Table>
 				<TableHeader>
 					<TableRow className="border-b border-card-border border-dashed">
-						<TableHead className="w-16"></TableHead>
 						<TableHead className="text-text-muted uppercase tracking-wide">
 							Kamera
 						</TableHead>
@@ -69,7 +68,6 @@ export default function CameraList({
 						<TableHead className="text-text-muted uppercase tracking-wide text-right">
 							Durum
 						</TableHead>
-						<TableHead className="w-12"></TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>

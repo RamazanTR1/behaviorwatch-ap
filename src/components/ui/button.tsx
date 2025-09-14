@@ -34,13 +34,13 @@ const buttonVariants = cva(
 				outline:
 					"border border-border bg-background shadow-sm hover:bg-hover hover:text-foreground",
 				ghost: "hover:bg-hover hover:text-foreground",
-				link: "text-primary underline-offset-4 hover:underline",
+				link: "text-primary underline-offset-4 underline",
 			},
 			size: {
 				sm: "h-8 px-3 py-1.5 text-sm rounded-md",
 				md: "h-9 px-4 py-2 text-base rounded-md",
 				lg: "h-11 px-6 py-3 text-lg rounded-md",
-				icon: "h-9 w-9",
+				icon: "h-10 w-10 rounded-sm",
 			},
 		},
 		defaultVariants: {

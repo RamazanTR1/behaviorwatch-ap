@@ -65,8 +65,7 @@ export default {
 			boxShadow: {
 				card: "0 1px 3px 0 hsl(var(--card-shadow)), 0 1px 2px 0 hsl(var(--card-shadow))",
 				"card-offset": "6px 6px 0px 0px hsl(var(--card-shadow))",
-				"button-offset":
-					"0px 0px 5px 0px rgba(0, 0, 0, 0.1),6px 6px 0px 0px rgba(255,0,0,1)",
+				"button-offset": "3px 3px 0px 0px hsl(var(--primary-btn-text))",
 				"sidebar-active":
 					"4px 4px 1px 0px hsl(var(--sidebar-active)), 0 1px 2px 0 hsl(var(--sidebar-active))",
 			},

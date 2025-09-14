@@ -1,5 +1,6 @@
 import StatsCard from "@/components/ui/stats-card";
 import CameraList from "@/components/ui/camera-list";
+import PersonList from "@/components/ui/person-list";
 import { Users, Calendar, Cctv, ShieldAlert, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -65,6 +66,50 @@ const cameraData = [
 	},
 ];
 
+// Mock person data
+const personData = [
+	{
+		name: "Ramazan Türkyılmaz",
+		business: "Yemelik Çiğköfte",
+		organization: "Ana Şube",
+		email: "ramazan@gmail.com",
+		phone: "532 123 45 67",
+		title: "Çalışan",
+	},
+	{
+		name: "Murat Gündüz",
+		business: "Yemelik Çiğköfte",
+		organization: "Şube 2",
+		email: "murat@gmail.com",
+		phone: "532 987 65 43",
+		title: "Yönetici",
+	},
+	{
+		name: "Ali Veli",
+		business: "Kahve Dünyası",
+		organization: "Merkez",
+		email: "ali@gmail.com",
+		phone: "532 555 44 33",
+		title: "Çalışan",
+	},
+	{
+		name: "Ayşe Demir",
+		business: "Pizza Palace",
+		organization: "Avm Şubesi",
+		email: "ayse@gmail.com",
+		phone: "532 777 88 99",
+		title: "Kasiyer",
+	},
+	{
+		name: "Mehmet Kaya",
+		business: "Burger King",
+		organization: "Ana Cadde",
+		email: "mehmet@gmail.com",
+		phone: "532 111 22 33",
+		title: "Müdür",
+	},
+];
+
 export default function DashboardPage() {
 	return (
 		<div className="space-y-6">
@@ -85,8 +130,8 @@ export default function DashboardPage() {
 
 			{/* Content with Sidebar */}
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-				{/* Left content (stats + diğer içerikler) */}
-				<div className="md:col-span-2 lg:col-span-3 space-y-8">
+				{/* Left content */}
+				<div className="sm:col-span-2 lg:col-span-3 space-y-8">
 					{/* Stats cards */}
 					<div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-8">
 						{statsData.map((stat, index) => (
@@ -111,6 +156,17 @@ export default function DashboardPage() {
 						currentPage={1}
 						totalPages={3}
 						onPageChange={(page) => console.log("Page changed to:", page)}
+					/>
+
+					{/* Person List */}
+					<PersonList
+						persons={personData}
+						currentPage={1}
+						totalPages={2}
+						onPageChange={(page) =>
+							console.log("Person page changed to:", page)
+						}
+						totalCount={5}
 					/>
 				</div>
 

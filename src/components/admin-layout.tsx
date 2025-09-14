@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "./ui/sidebar";
 import Header from "./ui/header";
 
@@ -12,16 +12,43 @@ export default function AdminLayout() {
 	};
 
 	const toggleMobileSidebar = () => {
-		console.log(
-			"Mobile sidebar toggle clicked, current state:",
-			mobileSidebarOpen
-		);
 		setMobileSidebarOpen(!mobileSidebarOpen);
 	};
 
 	const closeMobileSidebar = () => {
 		setMobileSidebarOpen(false);
 	};
+
+	// Auto-collapse sidebar on lg breakpoint
+	useEffect(() => {
+		let timeoutId: ReturnType<typeof setTimeout>;
+
+		const handleResize = () => {
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(() => {
+				const shouldCollapse = window.innerWidth < 1024;
+
+				// Sadece state değiştiyse güncelle
+				setSidebarCollapsed((prev) => {
+					if (prev !== shouldCollapse) {
+						return shouldCollapse;
+					}
+					return prev;
+				});
+			}, 100);
+		};
+
+		// Check on mount
+		handleResize();
+
+		// Listen for resize
+		window.addEventListener("resize", handleResize);
+
+		return () => {
+			window.removeEventListener("resize", handleResize);
+			clearTimeout(timeoutId);
+		};
+	}, []);
 
 	return (
 		<div className="min-h-screen bg-background text-foreground transition-colors duration-300">
