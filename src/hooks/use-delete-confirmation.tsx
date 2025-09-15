@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DeleteConfirmationModal, {
 	type EntityType,
-} from "@/components/ui/delete-modal";
+} from "@/components/delete-modal";
 import type { ReactNode } from "react";
 
 export interface DeleteConfirmationModalProps {

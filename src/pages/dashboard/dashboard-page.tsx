@@ -1,6 +1,6 @@
-import StatsCard from "@/components/ui/stats-card";
-import CameraList from "@/components/ui/camera-list";
-import PersonList from "@/components/ui/person-list";
+import StatsCard from "@/components/stats-card";
+import CameraList from "@/components/camera-list";
+import PersonList from "@/components/person-list";
 import { Users, Calendar, Cctv, ShieldAlert, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

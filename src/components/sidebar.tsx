@@ -356,7 +356,7 @@ export default function Sidebar({
 				{/* Mobile Footer */}
 				<div className="mt-auto p-4 border-t border-border">
 					<Button
-						variant="outline"
+						variant="secondary"
 						onClick={handleLogout}
 						disabled={!isActionable || isLoading}
 						className="w-full gap-3 justify-start"

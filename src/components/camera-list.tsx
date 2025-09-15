@@ -9,7 +9,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import Pagination from "@/components/ui/pagination";
+import { DashboardPagination } from "@/components/ui/pagination";
 
 interface Camera {
 	name: string;
@@ -59,6 +59,7 @@ export default function CameraList({
 			<Table>
 				<TableHeader>
 					<TableRow className="border-b border-card-border border-dashed">
+						<TableHead></TableHead>
 						<TableHead className="text-text-muted uppercase tracking-wide">
 							Kamera
 						</TableHead>
@@ -68,6 +69,7 @@ export default function CameraList({
 						<TableHead className="text-text-muted uppercase tracking-wide text-right">
 							Durum
 						</TableHead>
+						<TableHead></TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
@@ -112,7 +114,7 @@ export default function CameraList({
 			</Table>
 
 			{/* Pagination */}
-			<Pagination
+			<DashboardPagination
 				currentPage={currentPage}
 				totalPages={totalPages}
 				onPageChange={onPageChange}
