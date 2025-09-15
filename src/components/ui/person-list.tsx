@@ -59,9 +59,6 @@ export default function PersonList({
 							İşletme - Organizasyon
 						</TableHead>
 						<TableHead className="text-text-muted uppercase tracking-wide">
-							E-posta
-						</TableHead>
-						<TableHead className="text-text-muted uppercase tracking-wide">
 							Telefon
 						</TableHead>
 						<TableHead className="text-text-muted uppercase tracking-wide">
@@ -85,9 +82,6 @@ export default function PersonList({
 								<h3 className="text-sm text-text-primary">
 									{person.business} - {person.organization}
 								</h3>
-							</TableCell>
-							<TableCell>
-								<p className="text-sm text-text-primary">{person.email}</p>
 							</TableCell>
 							<TableCell>
 								<p className="text-sm text-text-primary">{person.phone}</p>

@@ -223,7 +223,9 @@ export default function Sidebar({
 
 				{item.has_submenu && isExpanded && (
 					<div className="mt-1 space-y-1 animate-in slide-in-from-top-2 duration-200">
-						{item.submenu?.map((subItem) => renderNavItem(subItem, true))}
+						{item.submenu?.map((subItem) =>
+							renderNavItem(subItem, true, isMobile)
+						)}
 					</div>
 				)}
 			</div>

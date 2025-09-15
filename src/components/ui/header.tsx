@@ -38,7 +38,7 @@ export default function Header({
 			<div className="flex items-center gap-3">
 				{/* Notifications */}
 				<Button
-					variant="outline"
+					variant="ghost"
 					size="icon"
 					className="relative border border-card-border rounded-sm shadow-button-offset"
 				>
