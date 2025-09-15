@@ -131,7 +131,7 @@ export function ListPagination({
 	showingItems,
 }: ListPaginationProps) {
 	return (
-		<div className="flex items-center justify-between px-6 py-4 bg-card border-t border-border">
+		<div className="flex items-center justify-between px-6 py-4 ">
 			{/* Sol taraf - Sonuç sayısı */}
 			<div className="text-sm text-text-secondary">
 				<span className="font-medium">
@@ -145,7 +145,7 @@ export function ListPagination({
 				<Button
 					variant="outline"
 					size="sm"
-					className="h-8 px-2 text-sm rounded-none border-r-0"
+					className="h-8 px-2 text-sm rounded-none border-r-0 border-t-0 border-b-0"
 					onClick={() => onPageChange(1)}
 					disabled={currentPage === 1}
 				>
@@ -155,7 +155,7 @@ export function ListPagination({
 				<Button
 					variant="outline"
 					size="sm"
-					className="h-8 px-2 text-sm rounded-none border-r-0 border-l-[#343a3f]"
+					className="h-8 px-2 text-sm rounded-none border-r-0 border-l-[#343a3f] border-t-0 border-b-0"
 					onClick={() => onPageChange(currentPage - 1)}
 					disabled={currentPage === 1}
 				>
@@ -200,7 +200,7 @@ export function ListPagination({
 				<Button
 					variant="outline"
 					size="sm"
-					className="h-8 px-2 text-sm rounded-none border-r-[#343a3f]"
+					className="h-8 px-2 text-sm rounded-none border-r-[#343a3f] border-t-0 border-b-0"
 					onClick={() => onPageChange(currentPage + 1)}
 					disabled={currentPage === totalPages}
 				>
@@ -210,7 +210,7 @@ export function ListPagination({
 				<Button
 					variant="outline"
 					size="sm"
-					className="h-8 px-2 text-sm rounded-none"
+					className="h-8 px-2 text-sm rounded-none border-t-0 border-b-0"
 					onClick={() => onPageChange(totalPages)}
 					disabled={currentPage === totalPages}
 				>

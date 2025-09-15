@@ -68,6 +68,13 @@ export default {
 				"button-offset": "3px 3px 0px 0px hsl(var(--primary-btn-text))",
 				"sidebar-active":
 					"4px 4px 1px 0px hsl(var(--sidebar-active)), 0 1px 2px 0 hsl(var(--sidebar-active))",
+				"list-button-info-offset": "3px 3px 0px 0px hsl(var(--info-btn-bg))",
+				"list-button-success-offset":
+					"3px 3px 0px 0px hsl(var(--success-btn-bg))",
+				"list-button-danger-offset":
+					"3px 3px 0px 0px hsl(var(--danger-btn-bg))",
+				"list-button-warning-offset":
+					"3px 3px 0px 0px hsl(var(--warning-btn-bg))",
 			},
 
 			// Animation durations from Design System

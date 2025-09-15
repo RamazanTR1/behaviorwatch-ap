@@ -1,6 +1,6 @@
 import type { Pagination } from "./pagination.types";
 import type { PersonsResponse } from "./persons.types";
-import type { CameraResponse } from "./camera.types";
+import type { CameraResponse } from "./cameras.types";
 import type { BusinessesResponse } from "./businesses.types";
 import type { MediaResponse } from "./media.types";
 

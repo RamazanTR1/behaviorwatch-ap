@@ -33,6 +33,14 @@ const buttonVariants = cva(
 					"bg-btn-danger text-destructive border border-destructive shadow-sm hover:bg-destructive hover:text-destructive-foreground",
 				outline:
 					"border border-border bg-background shadow-sm hover:bg-hover hover:text-foreground",
+				listInfo:
+					"bg-btn-info text-info border border-info shadow-list-button-info-offset hover:bg-info hover:text-info-foreground",
+				listSuccess:
+					"bg-btn-success text-success border border-success shadow-list-button-success-offset hover:bg-success hover:text-success-foreground",
+				listDanger:
+					"bg-btn-danger text-destructive border border-destructive shadow-list-button-danger-offset hover:bg-destructive hover:text-destructive-foreground",
+				listWarning:
+					"bg-btn-warning text-warning border border-warning shadow-list-button-warning-offset hover:bg-warning hover:text-warning-foreground",
 				ghost: "hover:bg-hover hover:text-foreground",
 				link: "text-primary underline-offset-4 underline",
 			},
@@ -41,6 +49,7 @@ const buttonVariants = cva(
 				md: "h-9 px-4 py-2 text-base rounded-md",
 				lg: "h-11 px-6 py-3 text-lg rounded-md",
 				icon: "h-10 w-10 rounded-sm",
+				listIcon: "h-9 w-9 rounded-full",
 			},
 		},
 		defaultVariants: {

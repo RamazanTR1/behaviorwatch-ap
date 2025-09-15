@@ -6,6 +6,7 @@ import { useOrganizations } from "@/hooks/use-organization";
 import OrganizationCard from "@/components/ui/organization-card";
 import { ListPagination } from "@/components/ui/pagination";
 import Breadcrumb from "@/components/ui/breadcrumb";
+import SearchComponent from "@/components/ui/search";
 import type { OrganizationResponse } from "@/types/organization.types";
 
 export default function OrganizationListPage() {
@@ -37,6 +38,11 @@ export default function OrganizationListPage() {
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 		console.log("Page changed to:", page);
+	};
+
+	const handleSearch = (searchValue: string) => {
+		console.log("Search:", searchValue);
+		// TODO: Implement search functionality
 	};
 
 	if (isLoading) {
@@ -89,41 +95,29 @@ export default function OrganizationListPage() {
 		<div className="space-y-6">
 			{/* Page Header */}
 			<div className="flex items-center justify-between flex-wrap gap-3">
-				<h1 className="text-2xl font-bold text-text-primary tracking-wider">
+				<h1 className="text-2xl font-bold text-text-primary tracking-wide">
 					ORGANİZASYONLAR
 				</h1>
 				<Breadcrumb
-					items={[{ label: "Organizasyonlar", href: "/organizations" }]}
+					items={[
+						{ label: "BehaviorWatch", href: "/" },
+						{ label: "Organizasyonlar", href: "/organizations" },
+					]}
 				/>
 			</div>
 
-			{/* Header Card */}
-			<Card className="shadow-card-offset border-card-border">
-				<div className="flex items-center justify-between p-6">
-					<div className="flex items-center gap-3">
-						<div className="w-10 h-10 bg-btn-secondary/20 rounded-lg flex items-center justify-center">
-							<Building2 className="h-5 w-5 text-secondary" />
-						</div>
-						<div>
-							<h2 className="text-xl font-semibold text-text-primary tracking-wide">
-								Organizasyon Listesi
-							</h2>
-							<p className="text-sm text-text-secondary">
-								Toplam {totalCount} organizasyon
-							</p>
-						</div>
-					</div>
-					<Button
-						variant="success"
-						className="gap-2"
-						onClick={handleAddOrganization}
-					>
-						<Plus className="h-4 w-4" />
-						Organizasyon Ekle
-					</Button>
-				</div>
-			</Card>
-
+			{/* Search and Add Section */}
+			<div className="flex justify-between items-center gap-5">
+				<SearchComponent
+					placeholder="Organizasyon ara..."
+					onSearch={handleSearch}
+					className="w-64 h-10"
+				/>
+				<Button variant="success" onClick={handleAddOrganization}>
+					<Plus className="h-4 w-4 mr-2" />
+					Organizasyon Ekle
+				</Button>
+			</div>
 			{/* Organizations Grid */}
 			{organizations.length > 0 ? (
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

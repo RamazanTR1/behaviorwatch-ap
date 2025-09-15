@@ -280,7 +280,7 @@ export default function Sidebar({
 									{section.header}
 								</h3>
 							)}
-							<div className="space-y-1">
+							<div className="space-y-2">
 								{section.items.map((item) => renderNavItem(item))}
 							</div>
 						</div>

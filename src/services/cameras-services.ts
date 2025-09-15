@@ -3,7 +3,7 @@ import type {
 	CameraResponse,
 	CameraList,
 	CameraRequest,
-} from "@/types/camera.types";
+} from "@/types/cameras.types";
 
 export const getCameras = (
 	businessId: number,
