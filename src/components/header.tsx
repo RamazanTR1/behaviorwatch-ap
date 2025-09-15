@@ -17,7 +17,7 @@ export default function Header({
 			{/* Left Section - Sidebar Toggle */}
 			<div className="flex items-center">
 				<Button
-					variant="outline"
+					variant="ghost"
 					size="icon"
 					onClick={() => {
 						// Desktop'ta sidebar toggle, mobile'da mobile toggle
@@ -27,10 +27,13 @@ export default function Header({
 							onMobileToggle?.();
 						}
 					}}
-					className="shadow-sm bg-btn-secondary-hover hover:bg-black rounded-sm relative"
+					className="bg-btn-secondary-hover hover:bg-primary rounded-sm relative"
 				>
-					<Menu className="size-6 text-white" />
-					<span className="absolute inset-0 rounded-sm border border-btn-secondary-hover translate-x-1 translate-y-1 -z-10"></span>
+					<Menu
+						className=" text-white"
+						style={{ width: "18px", height: "18px" }}
+					/>
+					<span className="absolute inset-0 rounded-sm border border-btn-secondary-hover translate-x-1 translate-y-1 -z-10 dark:hidden"></span>
 				</Button>
 			</div>
 
@@ -40,9 +43,9 @@ export default function Header({
 				<Button
 					variant="ghost"
 					size="icon"
-					className="relative border border-card-border rounded-sm shadow-button-offset"
+					className="relative hover:text-white hover:border-none border border-card-border rounded-sm shadow-button-offset hover:bg-btn-success-hover"
 				>
-					<Bell className="h-5 w-5" />
+					<Bell style={{ width: "18px", height: "18px" }} />
 					<Badge
 						variant="destructive"
 						className="absolute -top-1 -right-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs"
@@ -52,7 +55,7 @@ export default function Header({
 				</Button>
 
 				{/* Theme Toggle */}
-				<DarkModeToggle className="border border-card-border rounded-sm shadow-button-offset" />
+				<DarkModeToggle className="border border-card-border rounded-sm hover:text-white hover:border-none hover:bg-btn-success-hover shadow-button-offset" />
 			</div>
 		</header>
 	);

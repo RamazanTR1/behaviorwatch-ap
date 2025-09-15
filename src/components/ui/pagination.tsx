@@ -8,9 +8,9 @@ import {
 
 // Dashboard için basit pagination
 interface DashboardPaginationProps {
-	currentPage: number;
+	currentPage: number; // 0-indexed backend page
 	totalPages: number;
-	onPageChange: (page: number) => void;
+	onPageChange: (page: number) => void; // Returns 0-indexed page
 	itemsPerPage: number;
 	totalItems: number;
 	showingItems: number;
@@ -18,9 +18,9 @@ interface DashboardPaginationProps {
 
 // List sayfaları için gelişmiş pagination
 interface ListPaginationProps {
-	currentPage: number;
+	currentPage: number; // 0-indexed backend page
 	totalPages: number;
-	onPageChange: (page: number) => void;
+	onPageChange: (page: number) => void; // Returns 0-indexed page
 	totalItems: number;
 	showingItems: number;
 }
@@ -32,6 +32,9 @@ export function DashboardPagination({
 	totalItems,
 	showingItems,
 }: DashboardPaginationProps) {
+	// Backend 0-indexed, UI 1-indexed
+	const displayCurrentPage = currentPage + 1;
+
 	return (
 		<div className="flex items-center justify-between px-6 py-4 border-t border-card-border">
 			<p className="text-sm text-text-secondary">
@@ -45,8 +48,8 @@ export function DashboardPagination({
 					variant="outline"
 					size="sm"
 					className="h-8 w-8 p-0"
-					onClick={() => onPageChange(1)}
-					disabled={currentPage === 1}
+					onClick={() => onPageChange(0)}
+					disabled={currentPage === 0}
 					title="İlk sayfa"
 				>
 					<ChevronFirst className="h-4 w-4" />
@@ -58,7 +61,7 @@ export function DashboardPagination({
 					size="sm"
 					className="h-8 w-8 p-0"
 					onClick={() => onPageChange(currentPage - 1)}
-					disabled={currentPage === 1}
+					disabled={currentPage === 0}
 					title="Önceki sayfa"
 				>
 					<ChevronLeft className="h-4 w-4" />
@@ -66,31 +69,34 @@ export function DashboardPagination({
 
 				{/* Page Numbers */}
 				{Array.from({ length: Math.min(totalPages, 3) }, (_, i) => {
-					let pageNumber;
+					let displayPageNumber;
 					if (totalPages <= 3) {
-						pageNumber = i + 1;
-					} else if (currentPage <= 2) {
-						pageNumber = i + 1;
-					} else if (currentPage >= totalPages - 1) {
-						pageNumber = totalPages - 2 + i;
+						displayPageNumber = i + 1;
+					} else if (displayCurrentPage <= 2) {
+						displayPageNumber = i + 1;
+					} else if (displayCurrentPage >= totalPages - 1) {
+						displayPageNumber = totalPages - 2 + i;
 					} else {
-						pageNumber = currentPage - 1 + i;
+						displayPageNumber = displayCurrentPage - 1 + i;
 					}
+
+					// Convert display page (1-indexed) to backend page (0-indexed)
+					const backendPage = displayPageNumber - 1;
 
 					return (
 						<Button
-							key={pageNumber}
+							key={displayPageNumber}
 							variant="outline"
 							size="sm"
 							className={`h-8 w-8 p-0 ${
-								currentPage === pageNumber
+								currentPage === backendPage
 									? "bg-primary text-primary-foreground"
 									: ""
 							}`}
-							onClick={() => onPageChange(pageNumber)}
-							title={`Sayfa ${pageNumber}`}
+							onClick={() => onPageChange(backendPage)}
+							title={`Sayfa ${displayPageNumber}`}
 						>
-							{pageNumber}
+							{displayPageNumber}
 						</Button>
 					);
 				})}
@@ -101,7 +107,7 @@ export function DashboardPagination({
 					size="sm"
 					className="h-8 w-8 p-0"
 					onClick={() => onPageChange(currentPage + 1)}
-					disabled={currentPage === totalPages}
+					disabled={currentPage === totalPages - 1}
 					title="Sonraki sayfa"
 				>
 					<ChevronRight className="h-4 w-4" />
@@ -112,8 +118,8 @@ export function DashboardPagination({
 					variant="outline"
 					size="sm"
 					className="h-8 w-8 p-0"
-					onClick={() => onPageChange(totalPages)}
-					disabled={currentPage === totalPages}
+					onClick={() => onPageChange(totalPages - 1)}
+					disabled={currentPage === totalPages - 1}
 					title="Son sayfa"
 				>
 					<ChevronLast className="h-4 w-4" />
@@ -130,6 +136,9 @@ export function ListPagination({
 	totalItems,
 	showingItems,
 }: ListPaginationProps) {
+	// Backend 0-indexed, UI 1-indexed
+	const displayCurrentPage = currentPage + 1;
+
 	return (
 		<div className="flex items-center justify-between px-6 py-4 ">
 			{/* Sol taraf - Sonuç sayısı */}
@@ -146,8 +155,8 @@ export function ListPagination({
 					variant="outline"
 					size="sm"
 					className="h-8 px-2 text-sm rounded-none border-r-0 border-t-0 border-b-0"
-					onClick={() => onPageChange(1)}
-					disabled={currentPage === 1}
+					onClick={() => onPageChange(0)}
+					disabled={currentPage === 0}
 				>
 					<ChevronFirst className="h-4 w-4" />
 				</Button>
@@ -157,41 +166,41 @@ export function ListPagination({
 					size="sm"
 					className="h-8 px-2 text-sm rounded-none border-r-0 border-l-[#343a3f] border-t-0 border-b-0"
 					onClick={() => onPageChange(currentPage - 1)}
-					disabled={currentPage === 1}
+					disabled={currentPage === 0}
 				>
 					<ChevronLeft className="h-4 w-4" />
 				</Button>
 
 				{/* Page Numbers */}
 				{Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-					let pageNumber;
+					let displayPageNumber;
 					if (totalPages <= 5) {
-						pageNumber = i + 1;
-					} else if (currentPage <= 3) {
-						pageNumber = i + 1;
-					} else if (currentPage >= totalPages - 2) {
-						pageNumber = totalPages - 4 + i;
+						displayPageNumber = i + 1;
+					} else if (displayCurrentPage <= 3) {
+						displayPageNumber = i + 1;
+					} else if (displayCurrentPage >= totalPages - 2) {
+						displayPageNumber = totalPages - 4 + i;
 					} else {
-						pageNumber = currentPage - 2 + i;
+						displayPageNumber = displayCurrentPage - 2 + i;
 					}
 
-					// const isFirst = i === 0;
-					// const isLast = i === Math.min(totalPages, 5) - 1;
+					// Convert display page (1-indexed) to backend page (0-indexed)
+					const backendPage = displayPageNumber - 1;
 
 					return (
 						<Button
-							key={pageNumber}
+							key={displayPageNumber}
 							variant="primary"
 							size="sm"
 							className={`h-8 w-8 p-0 text-sm rounded-none
 							 ${
-									currentPage === pageNumber
+									currentPage === backendPage
 										? "bg-primary text-primary-foreground z-10"
 										: "bg-background border-t-0 border-b-0"
 								}`}
-							onClick={() => onPageChange(pageNumber)}
+							onClick={() => onPageChange(backendPage)}
 						>
-							{pageNumber}
+							{displayPageNumber}
 						</Button>
 					);
 				})}
@@ -202,7 +211,7 @@ export function ListPagination({
 					size="sm"
 					className="h-8 px-2 text-sm rounded-none border-r-[#343a3f] border-t-0 border-b-0"
 					onClick={() => onPageChange(currentPage + 1)}
-					disabled={currentPage === totalPages}
+					disabled={currentPage === totalPages - 1}
 				>
 					<ChevronRight className="h-4 w-4" />
 				</Button>
@@ -211,8 +220,8 @@ export function ListPagination({
 					variant="outline"
 					size="sm"
 					className="h-8 px-2 text-sm rounded-none border-t-0 border-b-0"
-					onClick={() => onPageChange(totalPages)}
-					disabled={currentPage === totalPages}
+					onClick={() => onPageChange(totalPages - 1)}
+					disabled={currentPage === totalPages - 1}
 				>
 					<ChevronLast className="h-4 w-4" />
 				</Button>

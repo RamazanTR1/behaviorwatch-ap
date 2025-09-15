@@ -8,6 +8,7 @@ import LoginPage from "./pages/login/login-page";
 import DashboardPage from "./pages/dashboard/dashboard-page";
 import OrganizationListPage from "./pages/organization/organization-list-page";
 import BusinessListPage from "./pages/business/business-list-page";
+import CamerasListPage from "./pages/cameras/cameras-list-page";
 
 function App() {
 	return (
@@ -26,6 +27,7 @@ function App() {
 									element={<OrganizationListPage />}
 								/>
 								<Route path="/businesses" element={<BusinessListPage />} />
+								<Route path="/cameras" element={<CamerasListPage />} />
 							</Route>
 						</Route>
 					</Routes>

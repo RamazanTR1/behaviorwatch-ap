@@ -10,7 +10,7 @@ import SearchComponent from "@/components/ui/search";
 import type { OrganizationResponse } from "@/types/organization.types";
 
 export default function OrganizationListPage() {
-	const [currentPage, setCurrentPage] = useState(1);
+	const [currentPage, setCurrentPage] = useState(0); // 0-indexed for backend
 	const { data: organizationsData, isLoading, error } = useOrganizations();
 
 	const handleAddOrganization = () => {
@@ -36,11 +36,12 @@ export default function OrganizationListPage() {
 	};
 
 	const handlePageChange = (page: number) => {
-		setCurrentPage(page);
+		setCurrentPage(page); // page is already 0-indexed from pagination component
 		console.log("Page changed to:", page);
 	};
 
 	const handleSearch = (searchValue: string) => {
+		setCurrentPage(0); // Reset to first page when searching
 		console.log("Search:", searchValue);
 		// TODO: Implement search functionality
 	};

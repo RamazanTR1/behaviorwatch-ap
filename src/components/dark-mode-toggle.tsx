@@ -53,7 +53,11 @@ export default function DarkModeToggle({ className }: DarkModeToggleProps) {
 			className={className}
 			aria-label="Toggle dark mode"
 		>
-			{isDark ? <Sun /> : <Moon />}
+			{isDark ? (
+				<Sun style={{ width: "18px", height: "18px" }} />
+			) : (
+				<Moon style={{ width: "18px", height: "18px" }} />
+			)}
 		</Button>
 	);
 }
