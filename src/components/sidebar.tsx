@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-//import DarkModeToggle from "@/components/dark-mode-toggle";
 import { useLoginState } from "@/hooks/use-login-state";
 import {
 	LayoutDashboard,
@@ -19,7 +18,7 @@ import {
 	ChevronRight,
 	X,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 interface NavItem {
 	to: string;
@@ -130,27 +129,58 @@ export default function Sidebar({
 	const { logout, isActionable, isLoading } = useLoginState();
 	const navigate = useNavigate();
 	const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
+	const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+	const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
 
-	const handleLogout = async () => {
+	const handleLogout = useCallback(async () => {
 		try {
 			await logout();
 			navigate("/login");
 		} catch {
 			// noop
 		}
-	};
+	}, [logout, navigate]);
 
-	const toggleSubmenu = (itemLabel: string) => {
-		const newExpanded = new Set(expandedItems);
-		if (newExpanded.has(itemLabel)) {
-			newExpanded.delete(itemLabel);
-		} else {
-			newExpanded.add(itemLabel);
-		}
-		setExpandedItems(newExpanded);
-	};
+	const toggleSubmenu = useCallback((itemLabel: string) => {
+		setExpandedItems((prev) => {
+			const newExpanded = new Set(prev);
+			if (newExpanded.has(itemLabel)) {
+				newExpanded.delete(itemLabel);
+			} else {
+				newExpanded.add(itemLabel);
+			}
+			return newExpanded;
+		});
+	}, []);
 
-	const renderBadge = (badge: NavItem["badge"]) => {
+	const clearHoverTimeout = useCallback(() => {
+		setHoverTimeout((prev) => {
+			if (prev) {
+				clearTimeout(prev);
+			}
+			return null;
+		});
+	}, []);
+
+	const setHoverTimeoutWithDelay = useCallback(
+		(callback: () => void, delay = 300) => {
+			clearHoverTimeout();
+			const timeout = setTimeout(callback, delay);
+			setHoverTimeout(timeout);
+		},
+		[clearHoverTimeout]
+	);
+
+	// Cleanup timeout on unmount
+	useEffect(() => {
+		return () => {
+			if (hoverTimeout) {
+				clearTimeout(hoverTimeout);
+			}
+		};
+	}, [hoverTimeout]);
+
+	const renderBadge = useCallback((badge: NavItem["badge"]) => {
 		if (!badge) return null;
 
 		if (badge.type === "dot") {
@@ -168,69 +198,143 @@ export default function Sidebar({
 		}
 
 		return null;
-	};
+	}, []);
 
-	const renderNavItem = (
-		item: NavItem,
-		isSubmenu = false,
-		isMobile = false
-	) => {
-		const Icon = item.icon;
-		const isExpanded = expandedItems.has(item.label);
+	const getNavItemPosition = useCallback((label: string) => {
+		const element = document.querySelector(`[data-nav-item="${label}"]`);
+		return element?.getBoundingClientRect().top || 0;
+	}, []);
 
-		return (
-			<div key={item.to}>
-				<NavLink
-					to={item.to}
-					end={item.end}
-					className={({ isActive }) =>
-						`flex items-center gap-3 rounded-lg text-sm font-medium transition-all duration-200 group ${
-							collapsed && !isMobile ? "px-2 py-3 justify-center" : "px-3 py-3"
-						} ${
-							isActive
-								? "bg-sidebar-active text-sidebar-active-border border border-sidebar-bg shadow-sidebar-active"
-								: "text-text-primary hover:bg-sidebar-active hover:text-sidebar-active-border"
-						} ${isSubmenu ? "ml-4" : ""}`
-					}
-					onClick={
-						item.has_submenu
-							? (e) => {
-									e.preventDefault();
-									toggleSubmenu(item.label);
-							  }
-							: undefined
-					}
+	const renderNavItem = useCallback(
+		(item: NavItem, isSubmenu = false, isMobile = false) => {
+			const Icon = item.icon;
+			const isExpanded = expandedItems.has(item.label);
+			const isHovered = hoveredItem === item.label;
+
+			return (
+				<div
+					key={item.to}
+					className="relative z-[60]"
+					onMouseEnter={() => {
+						if (collapsed && !isMobile && item.has_submenu) {
+							clearHoverTimeout();
+							setHoveredItem(item.label);
+						}
+					}}
+					onMouseLeave={() => {
+						if (collapsed && !isMobile && item.has_submenu) {
+							setHoverTimeoutWithDelay(() => setHoveredItem(null));
+						}
+					}}
 				>
-					<Icon
-						className={`transition-colors duration-200 group-hover:text-sidebar-active-border${
-							collapsed && !isMobile ? "h-6 w-6" : "h-4 w-4"
-						}`}
-					/>
-					{(!collapsed || isMobile) && (
-						<>
-							<span className="flex-1 text-base">{item.label}</span>
-							{item.badge && renderBadge(item.badge)}
-							{item.has_submenu && (
-								<ChevronRight
-									className={`transition-transform duration-200 ease-in-out ${
-										isExpanded ? "rotate-90" : "rotate-0"
-									} ${collapsed && !isMobile ? "h-6 w-6" : "h-4 w-4"}`}
-								/>
-							)}
-						</>
-					)}
-				</NavLink>
-
-				{item.has_submenu && isExpanded && (
-					<div className="mt-1 space-y-1 animate-in slide-in-from-top-2 duration-200">
-						{item.submenu?.map((subItem) =>
-							renderNavItem(subItem, true, isMobile)
+					<NavLink
+						to={item.to}
+						end={item.end}
+						data-nav-item={item.label}
+						className={({ isActive }) =>
+							`flex items-center gap-3 rounded-lg text-sm font-medium transition-all duration-200 group ${
+								collapsed && !isMobile
+									? "px-2 py-3 justify-center"
+									: "px-3 py-3"
+							} ${
+								isActive
+									? "bg-sidebar-active text-sidebar-active-border border border-sidebar-bg shadow-sidebar-active"
+									: "text-text-primary hover:bg-sidebar-active hover:text-sidebar-active-border"
+							} ${isSubmenu ? "ml-4" : ""}`
+						}
+						onClick={
+							item.has_submenu && (!collapsed || isMobile)
+								? (e) => {
+										e.preventDefault();
+										toggleSubmenu(item.label);
+								  }
+								: undefined
+						}
+					>
+						<Icon
+							className={`transition-colors duration-200 group-hover:text-sidebar-active-border${
+								collapsed && !isMobile ? "h-6 w-6" : "h-4 w-4"
+							}`}
+						/>
+						{(!collapsed || isMobile) && (
+							<>
+								<span className="flex-1 text-base">{item.label}</span>
+								{item.badge && renderBadge(item.badge)}
+								{item.has_submenu && (
+									<ChevronRight
+										className={`transition-transform duration-200 ease-in-out ${
+											isExpanded ? "rotate-90" : "rotate-0"
+										} ${collapsed && !isMobile ? "h-6 w-6" : "h-4 w-4"}`}
+									/>
+								)}
+							</>
 						)}
-					</div>
-				)}
-			</div>
-		);
-	};
+					</NavLink>
+
+					{/* Regular submenu for expanded sidebar */}
+					{item.has_submenu && isExpanded && (!collapsed || isMobile) && (
+						<div className="mt-1 space-y-1 animate-in slide-in-from-top-2 duration-200">
+							{item.submenu?.map((subItem) =>
+								renderNavItem(subItem, true, isMobile)
+							)}
+						</div>
+					)}
+
+					{/* Hover submenu for collapsed sidebar */}
+					{collapsed && !isMobile && item.has_submenu && isHovered && (
+						<div
+							data-submenu
+							className="fixed bg-sidebar-bg border border-border rounded-lg shadow-lg z-[60] min-w-[200px]"
+							style={{
+								left: "80px", // w-20 = 80px
+								top: `${getNavItemPosition(item.label)}px`,
+							}}
+							onMouseEnter={() => {
+								clearHoverTimeout();
+								setHoveredItem(item.label);
+							}}
+							onMouseLeave={() => {
+								setHoverTimeoutWithDelay(() => setHoveredItem(null));
+							}}
+						>
+							<div className="p-2 space-y-1">
+								<div className="px-3 py-2 text-sm font-semibold text-text-primary border-b border-border mb-2">
+									{item.label}
+								</div>
+								{item.submenu?.map((subItem) => (
+									<NavLink
+										key={subItem.to}
+										to={subItem.to}
+										end={subItem.end}
+										className={({ isActive }) =>
+											`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+												isActive
+													? "bg-sidebar-active text-sidebar-active-border"
+													: "text-text-primary hover:bg-sidebar-active hover:text-sidebar-active-border"
+											}`
+										}
+									>
+										<subItem.icon className="h-4 w-4" />
+										<span>{subItem.label}</span>
+									</NavLink>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+			);
+		},
+		[
+			collapsed,
+			expandedItems,
+			hoveredItem,
+			clearHoverTimeout,
+			setHoverTimeoutWithDelay,
+			getNavItemPosition,
+			toggleSubmenu,
+			renderBadge,
+		]
+	);
 
 	return (
 		<>
@@ -247,6 +351,12 @@ export default function Sidebar({
 				className={`fixed left-0 top-0 z-30 h-screen bg-sidebar-bg border-r border-black flex flex-col transition-all duration-300 ${
 					collapsed ? "w-20" : "w-64"
 				} hidden md:flex`}
+				onMouseLeave={() => {
+					if (collapsed) {
+						clearHoverTimeout();
+						setHoveredItem(null);
+					}
+				}}
 			>
 				{/* Logo Section */}
 				<div
